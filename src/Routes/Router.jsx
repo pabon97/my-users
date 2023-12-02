@@ -3,21 +3,14 @@ import App from "../App";
 import Login from "../Components/Login";
 import User from "../Components/User";
 
-
-
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <App/>,
-        children: [
-            {
-              path: "/",
-              element: <Login/>
-            },
-            {
-               path: "/user",
-               element: <User/>
-            }
-        ]
+        element: <Login/>,
+        
     },
+    {
+        path: "/user",
+        element: <User/>
+    }
 ]);
