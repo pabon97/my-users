@@ -3,21 +3,21 @@ import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 
 const User = () => {
-  const [users, setUsers] = useState([])
+  const [todos, setTodos] = useState([])
   useEffect(()=>{
- fetch('https://dummyjson.com/users')
+ fetch('https://jsonplaceholder.typicode.com/todos')
 .then(res => res.json())
-.then(data=> setUsers(data.users));
+.then(data=> setTodos(data));
   }, [])
-  console.log(users)
+  console.log(todos)
   return (
     <div>
        <Navbar/>
-       <h1 className='text-center'>Total User Found {users.length}</h1>
+       <h1 className='text-center'>Total Title  {todos.length}</h1>
        <ul className='text-center'>
-        {users.map((user) => (
-          <li key={user.id}>
-           Name: {user.firstName}, Age: {user.age}
+        {todos.map((todo) => (
+          <li key={todo.id}>
+           Title: {todo.title}
           </li>
         ))}
       </ul>
