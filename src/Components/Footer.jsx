@@ -1,14 +1,17 @@
 import React from 'react'
 
 const Footer = () => {
+  const date = new Date();
+let year = date.getFullYear();
+// console.log(year)
   return (
-    <div>
-        <footer class="bg-body-tertiary text-center text-lg-start">
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-      © 2023 Copyright:
-      <p class="text-body">Pabon</p>
-    </div>
-  </footer></div>
+    <footer class="bg-body-tertiary">
+   <div class="text-center p-3" style={{ marginTop:"280px"}}>
+    © {year} Copyright: All rights reserved by Hasin Anjum Pabon
+    
+  </div>
+  
+</footer>
   )
 }
 
