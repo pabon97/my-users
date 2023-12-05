@@ -10,7 +10,7 @@ const Navbar = () => {
  }
 
   }, [])
-  const handleLogout =() =>{
+  const handleLogout =() => {
   localStorage.removeItem('user')
   }
   console.log(user)
