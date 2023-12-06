@@ -1,11 +1,15 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react'
 import Post from '../Components/Post';
+import Pagination from '../Components/Pagination/Pagination';
 
 const Posts = () => {
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
-  
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(10);
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
 
   useEffect(()=>{
  fetch('https://jsonplaceholder.typicode.com/posts')
@@ -16,6 +20,8 @@ setLoading(false)
 })
   }, [])
   // console.log(posts)
+  
+
 
   return (
     <div className='container'>
@@ -26,7 +32,7 @@ setLoading(false)
    <div className="row">
     <h2 className='text-center'>Total Posts {posts.length}</h2>
    {
-     posts.map((post)=>(
+     posts.slice(firstPostIndex, lastPostIndex).map((post)=>(
        <Post
        key={post.id}
        post={post}
@@ -37,6 +43,7 @@ setLoading(false)
    }
  </div>
    }
+   <Pagination totalposts={posts.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
    
   </div>
   )
